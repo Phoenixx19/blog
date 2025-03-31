@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+{% for tag in site.tags %}
+{% assign tagKey = tag[0] %}
+{% assign person = site.data.tags-data[tagKey] %}
+<div class="bloque category" id="{{ tagKey }}">
+  <div class="pricetagIn">
+    <h4>{{ person.symbol }} {{ tagKey }}</h4>
+  </div>
+  <p>{{ person.description }}</p>
+  <ul>
+    {% for post in tag[1] %}
+    {% include post.html post=post %}
+    {% endfor %}
+  </ul>
+  <small>{{ tag[1] | size }} item(s)</small>
+</div>
+{% endfor %}

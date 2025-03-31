@@ -1,0 +1,118 @@
+---
+layout: default
+---
+
+{% capture time_words %} 
+    {{page.content | number_of_words | divided_by: 5}} 
+{% endcapture %}
+
+{% if page.thumbnail %} 
+<div class="thumbnail-space">
+  <div class="attributes">
+    <small class="d-block">Thumbnail taken from:</small>
+
+    {% if page.thumbnail.url %}
+    <a href="{{ page.thumbnail.url }}">{{ page.thumbnail.attribution }}</a>
+    {% else %}
+    <span>{{ page.thumbnail.attribution }}</span>
+    {% endif %}
+
+    {% if page.thumbnail.copy %}
+    <span>© {{ page.thumbnail.copy }}</span>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<div class="bloque">
+    <div class="content-flex">
+
+      <div class="d-none-big">
+        <h1>{{ page.title }}</h1>
+      </div>
+
+      <div class="d-none-big toc">
+        {% capture table-contents %}{% toc %}{% endcapture %}
+        {% include toc.html toc=table-contents %}
+      </div>
+
+      <div class="content">
+          <h1 class="d-none-small">{{ page.title }}</h1>
+          {{ page.content }}
+      </div>
+
+      <!-- side details -->
+      <div class="side-details">
+        <div class="top">
+          <div class="sticky">
+            {% include details.html page=page time_words=time_words %}
+            <hr />
+            {% include toc.html toc=table-contents %}
+          </div>
+        </div>
+        <div class="bottom">
+          {% include navigation.html page=page %}
+        </div>
+      </div>
+      <!-- side details end -->
+
+      <div class="d-none-big details">
+          {% include details.html page=page time_words=time_words %}
+      </div>
+
+      <div class="d-none-big">
+        <div class="buttons">
+          {% include navigation.html page=page %}
+        </div>
+      </div>
+
+    </div>
+    <div class="paperOverlay"></div>
+</div>
+
+<div class="bloque comments">
+  <div class="content-flex">
+
+    <div class="content">
+      <h3>Comments</h3>
+      <p>Let me know what you think about it!</p>
+      <script src="https://giscus.app/client.js"
+          data-repo="Phoenixx19/blog"
+          data-repo-id="R_kgDOOBpJMA"
+          data-category="Comments"
+          data-category-id="DIC_kwDOOBpJMM4CneMh"
+          data-mapping="og:title"
+          data-strict="0"
+          data-reactions-enabled="0"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="dark_dimmed"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+      </script>
+    </div>
+
+    {% assign posts = site.posts | where_exp:"post","post.url != page.url" %}
+    {% assign maxPosts = posts | size %}
+    {% if maxPosts > 0 %}
+    <div class="side-details">
+      <div class="top">
+        <div class="sticky">
+          <h3>Latest posts</h3>
+          <ul>
+            {% for post in posts limit:3 %}
+            {% include post.html post=post %}
+            {% endfor %}
+          </ul>
+          {% if maxPosts > 3 %}
+          <a href="/archive" class="button">More over on archive</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>

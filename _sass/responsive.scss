@@ -1,0 +1,33 @@
+@mixin mid-desktop {
+    @media screen and (max-width: 1440px) and (max-height: 1000px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media screen and (max-width: 600px) {
+        @content;
+    }
+}
+
+// various mixins
+@mixin dark {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}
+
+@mixin light {
+    @media (prefers-color-scheme: light) {
+        @content;
+    }
+}
+
+$white: white;
+$black: black;

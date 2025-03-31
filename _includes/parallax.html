@@ -1,0 +1,12 @@
+<picture id="parallax">
+    {% if page.thumbnail %}
+    <img src="{{ page.thumbnail.src }}" alt="{{ page.title }}" data-depth="0.15" class="bg-img">
+    {% else %}
+    <source srcset="https://phoenixx.design/content/images/web-bg2k.webp" type="image/webp">
+    <img data-depth="0.15" class="bg-img" src="https://phoenixx.design/content/images/web-bg2k.png" alt="Reflec10n">
+     {% endif %}
+</picture>
+<script>
+    var scene = document.getElementById('parallax');
+    var parallaxInstance = new Parallax(scene);
+</script>

@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<!-- <h1>Archive by year</h1>
+<hr> -->
+{% assign postsByYear =
+    site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+{% for year in postsByYear %}
+<div class="bloque related">
+  <h3>{{ year.name }}</h3>
+    <ul>
+        {% for post in year.items %}
+        {% include post.html post=post %}
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}

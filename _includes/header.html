@@ -1,0 +1,45 @@
+<header class="desktop" id="menu">
+    <div class="navigation-bar content-y">
+        <div class="p-relative">
+            <a class="icon invert no-rot8" href="/">
+                <img class="crisp" src="https://phoenixx.design/content/images/thex-white.png" alt="The X">
+            </a>
+            <div class="isolate blog-tag">
+                <div class="pricetagIn">blog</div>
+            </div>
+        </div>
+
+        <nav>
+            {% assign isLatest = "" %}
+            {% assign isCategories = "" %}
+            {% assign isArchive = "" %}
+
+            {% if page.id != nil && page.next == nil %}
+            {% assign isLatest = "active" %}
+            {% endif %}
+
+            {% capture catUrl %}{% link categories.html %}{% endcapture %}
+            {% if page.url == catUrl %}
+            {% assign isCategories = "active" %}
+            {% endif %}
+
+            {% capture archiveUrl %}{% link archive.html %}{% endcapture %}
+            {% if page.url == archiveUrl %}
+            {% assign isArchive = "active" %}
+            {% endif %}
+            
+            <!-- <div class="shared-link">
+                <a href="/latest" class="{{ isLatest }}">latest</a>
+                <a href="/feed.xml" class="rss">
+                    <ion-icon name="logo-rss"></ion-icon>
+                </a>
+            </div> -->
+            <a href="/categories" class="{{ isCategories }}">categories</a>
+            <a href="/archive" class="{{ isArchive }}">archive</a>
+            <a href="https://phoenixx.design/" class="icon invert about">
+                <span>about</span>
+                <img class="crisp" src="https://phoenixx.design/content/images/thex-white.png" alt="The X">
+            </a>
+        </nav>
+    </div>
+</header>

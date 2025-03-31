@@ -1,0 +1,6 @@
+{% if include.page.previous %}
+<a href="{{ include.page.previous.url }}" class="button">Previous post</a>
+{% endif %}
+{% if include.page.next %}
+<a href="{{ include.page.next.url }}" class="button">Next post</a>
+{% endif %}

@@ -1,0 +1,28 @@
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "" # the name of your site, e.g. ACME Corp.
+
+#Others
+markdown: kramdown
+
+# Syntax highlighting
+highlighter: rouge
+kramdown:
+    input: GFM 
+    syntax_highlighter: rouge
+    syntax_highlighter_opts:
+      css_class: 'highlight'
+
+toc:
+  ordered_list: true # default is false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      toc: true
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-toc

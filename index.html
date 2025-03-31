@@ -1,0 +1,11 @@
+---
+title: Latest blog
+layout: blank
+---
+
+{% assign page = site.posts.first %}
+<meta http-equiv="refresh" content="1;url={{ page.url }}"/>
+<link rel="canonical" href="{{ page.url }}"/> 
+ <script type="text/javascript">
+        window.location.href = "{{ page.url }}"
+</script>
