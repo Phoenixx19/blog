@@ -1,61 +1,14 @@
 ---
 ---
 
-@use "base";
-@import url("https://phoenixx.design/_scss/responsive.scss");
+@import "../../_sass/common.scss";
 
-/* PAID WAGON FONT */
-@font-face {
-  font-family: "Wagon";
-  src: url("https://phoenixx.design/content/fonts/Wagon-BoldItalic.woff/Wagon-BoldItalic.woff") format("woff");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
+html {
+  scroll-padding-top: 3rem!important;
 }
-@font-face {
-  font-family: "Wagon";
-  src: url("https://phoenixx.design/content/fonts/Wagon-BoldItalic.woff/Wagon-BoldItalic.woff2") format("woff2");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-/* WAGON FONT */
-@font-face {
-  font-family: "Wagon";
-  src: url("https://phoenixx.design/content/fonts/Wagon-ExtraLight.otf");
-  font-style: normal;
-  font-weight: lighter;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Wagon";
-  src: url("https://phoenixx.design/content/fonts/Wagon-Bold.otf");
-  font-style: normal;
-  font-weight: bold;
-  font-display: swap;
-}
-/* HEADING PRO */
-// @font-face {
-//   font-family: "Heading Pro";
-//   src: url("https://phoenixx.design/content/fonts/Heading-Pro-Wide-Bold-Italic-trial.ttf");
-//   font-style: italic;
-//   font-weight: bold;
-//   font-display: swap;
-// }
-// @font-face {
-//   font-family: "Heading Pro";
-//   src: url("https://phoenixx.design/content/fonts/Heading-Pro-Wide-Regular-trial.ttf");
-//   font-style: normal;
-//   font-weight: 500;
-//   font-display: swap;
-// }
 
-@font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("./BricolageGrotesque%5Bopsz,wdth,wght%5D.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-  font-optical-sizing: auto;
+body {
+  scroll-behavior: smooth!important;
 }
 
 a[target=_blank]:not(.button):hover {
@@ -72,68 +25,47 @@ h1 {
 }
 
 h1 {
-  font-family: "Wagon";
-  font-size: 5rem;
-  line-height: unset;
-  text-align: unset;
   font-weight: bolder;
-  font-style: unset;
-  margin: 0;
-  opacity: 1;
-  will-change: unset;
-  writing-mode: unset;
-  text-orientation: unset;
-  transform: unset;
-  animation: unset;
-  animation-fill-mode: unset;
-  user-select: unset;
   display: block!important;
+  @include dark {
+    color: white;
+  }
 }
+
 h1, h2, h3, h4, h5, h6, p, span {
   text-rendering: optimizeLegibility;
 }
+
 // h1, h2, h3 {
 //   word-break: break-all;
 // }
+
 h4 {
   font-family: "Wagon";
   font-weight: bolder;
 }
-small {
-  font-family: "Bricolage Grotesque";
-}
-p, span, a, li {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  font-family: "Bricolage Grotesque";
-}
-
-#parallax {
-  position: fixed;
-  top: -5vh;
-  left: -5vw;
-  width: 110%;
-  height: 110%;
-  z-index: -1;
-}
-
-
-.bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  filter: invert(1);
-  -webkit-filter: invert(1);
-}
-@media (prefers-color-scheme: dark) {
-  .bg-img {
-    filter: invert(0);
-    -webkit-filter: invert(0);
-  }
-}
 
 .blog {
+  color: #d0d0c9;
+
+  h1, h2 {
+    margin: 0;
+  }
+  h3 {
+    margin-bottom: 1em;
+  }
+  h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+  // h5 {
+  //   margin-top: 1rem;
+  //   margin-bottom: 0.5rem;
+  // }
+  // h6 {
+  //   margin-top: 0.75rem;
+  //   margin-bottom: 0.33rem;
+  // }
 
   div.navigation-bar nav {
     gap: 1.5rem;
@@ -185,26 +117,6 @@ p, span, a, li {
     > *:last-child {
       margin-bottom: 0;
     }
-
-    h1, h2 {
-      margin: 0;
-    }
-
-    h3 {
-      margin-bottom: 1em;
-    }
-    h4 {
-      margin-top: 1.5em;
-      margin-bottom: 0.75em;
-    }
-    // h5 {
-    //   margin-top: 1rem;
-    //   margin-bottom: 0.5rem;
-    // }
-    // h6 {
-    //   margin-top: 0.75rem;
-    //   margin-bottom: 0.33rem;
-    // }
   }
 
   .content-flex {
@@ -213,25 +125,13 @@ p, span, a, li {
     gap: 0 4rem;
     align-items: stretch;
 
-    .d-none-big {
-      display: none;
-    }
-    .d-none-small {
-      display: initial;
-    }
+    
 
     @media screen and (max-width: 1240px) {
       flex-direction: column;
 
       .side-details {
         display: none;
-      }
-
-      .d-none-big {
-        display: initial;
-      }
-      .d-none-small {
-        display: none!important;
       }
     }
   }
@@ -281,7 +181,7 @@ p, span, a, li {
   }
 
   div.navigation-bar {
-    width: auto!important;
+    // width: auto!important;
     height: calc(100vh - 2.5rem);
     justify-content: space-between;
 
@@ -341,8 +241,6 @@ p, span, a, li {
     padding: 2.5rem 0;
     max-width: 100%;
   }
-
-  color: #d0d0c9;
 }
 
 .p-relative {
@@ -373,7 +271,7 @@ p, span, a, li {
 
   div.attributes {
     padding: 0.5rem 1rem;
-    border-width: 1px 0 1px 1px;
+    border-width: 1px 1px 1px 1px;
     border-style: solid;
     border-color: rgba($color: #555, $alpha: 0.5);
     border-radius: 1rem;
@@ -511,14 +409,6 @@ hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-html {
-  scroll-padding-top: 3rem!important;
-}
-
-body {
-  scroll-behavior: smooth!important;
-}
-
 .shared-link {
   display: flex;
   flex-direction: column;
@@ -591,6 +481,7 @@ body {
     flex-direction: column!important;
 
     header {
+      z-index: 1;
       height: auto;
     }
 
@@ -619,7 +510,135 @@ body {
   }
 }
 
-/* patcherino */
-a, b, i, strong, em {
-  font-family: "Bricolage Grotesque"!important;
+details.nav {
+  position: relative;
+
+  div {
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    width: max-content;
+    padding: 0.5rem 1rem;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: rgba($color: #555, $alpha: 0.5);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(50px);
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    // mix-blend-mode: normal;
+    margin-right: 0;
+  }
+}
+
+.d-none-big {
+  display: none;
+}
+.d-none-small {
+  display: initial;
+}
+
+@media screen and (max-width: 1240px) {
+  .d-none-big {
+    display: initial;
+  }
+  .d-none-small {
+    display: none!important;
+  }
+}
+
+@include phone {
+.page-content {
+    display: unset;
+  }
+
+  header {
+    position: relative;
+    background-color: rgba($color: #000000, $alpha: 1)!important;
+  }
+
+  header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.66)!important;
+    z-index: -1;
+  }
+}
+
+.popup-navigation {
+  display: none!important;
+}
+#navigation {
+  display: none;
+}
+#navigation:checked ~ .popup-navigation {
+  display: initial!important;
+  position: absolute;
+  right: 1.75rem;
+  top: 100%;
+}
+
+header {
+  backdrop-filter: blur(20px);
+}
+
+.popup-navigation {
+  z-index: 5;
+  position: relative;
+
+  a {
+    mix-blend-mode: unset;
+    display: block;
+  }
+
+  // https://generatepress.com/forums/topic/blur-filter-opacity-behind-drop-down-menu-not-working/
+  // &::before {
+  //   backdrop-filter: blur(20px);
+  //   content: "";
+  //   display: block;
+  //   height: 100%;
+  //   width: 100%;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  // }
+}
+
+.popup-navigation {
+  width: fit-content;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+  color: white;
+  position: relative;
+  font-size: small;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    right: -1px;
+    left: -1px;
+    // clip-path: polygon(100% 0%, 33% 0%, 0% 25%, 0% 75%, 33% 100%, 100% 100%);
+    clip-path: polygon(100% 9px, 90% 9px, 80% 0%, 70% 9px, 0% 9px, 0% 100%, 100% 100%);
+    background: white;
+    z-index: -1;
+  }
+  
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    // -webkit-clip-path: polygon(100% 0%, 0% 25%, 0% 75%, 100% 100%);
+    // clip-path: polygon(100% 0%, 0% 25%, 0% 75%, 100% 100%);
+    // clip-path: polygon(100% 0%, 33% 0%, 0% 25%, 0% 75%, 33% 100%, 100% 100%);
+    clip-path: polygon(100% 9px, 90% 9px, 80% 0%, 70% 9px, 0% 9px, 0% 100%, 100% 100%);
+    background: black;
+    z-index: -1;
+  }
 }

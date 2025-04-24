@@ -1,0 +1,470 @@
+@import "./common.scss";
+
+h1 {
+    font-size: 15vh;
+    line-height: 20vh;
+    text-align: center;
+    font-style: italic;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    opacity: 0;
+    will-change: opacity;
+    transform: translateX(-1.5rem);
+    animation: moveRight ease .75s, fadeIn ease .75s;
+    animation-fill-mode: forwards;
+    user-select: none;
+
+    @include laptop {
+        display: none;
+    }
+}
+h2 {
+    opacity: 0;
+    will-change: opacity;
+}
+span {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.125rem;
+}
+
+header {
+    @include phone {
+        mix-blend-mode: unset;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.66);
+        bottom: 0;
+        top: unset;
+    }
+}
+
+.sections {
+    flex: 1;
+    overflow-y: scroll;
+    max-height: 100%;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none; //moz
+    &::-webkit-scrollbar {
+        display: none; //safari&chrome
+    }
+
+    section {
+        height: 80vh;
+        scroll-snap-align: start;
+
+        > div {
+            position: absolute;
+            transform: translateY(-50%);
+            top: 50%;
+        }
+    }
+}
+
+section {
+    position: relative;
+    width: 100%;
+    max-height: 80vh!important;
+    overflow: hidden;
+    opacity: 0;
+    //margin-bottom: 20vh!important;
+    transition: opacity .1s cubic-bezier(0, 0, 0, 1);
+
+    &.show {
+        opacity: 1;
+
+        h2 {
+            animation: fadeIn ease .5s;
+            animation-fill-mode: forwards;
+        }
+
+        .blur {
+            backdrop-filter: blur(20px) opacity(1);
+            -webkit-backdrop-filter: blur(20px) opacity(1);
+            animation: fadeIn ease .75s;
+            animation-fill-mode: forwards;
+    
+            a:not(.button) {
+                cursor: alias;
+                color: black;
+    
+                @include dark {
+                    color: white;
+                }
+                
+                &:hover {
+                    color: white;
+                    background-color: black;
+    
+                    @include dark {
+                        color: black;
+                        background-color: white;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+footer .navigation-bar {
+    padding: 2.5rem;
+    padding-top: 0;
+}
+
+
+/* presentation section */
+.presentation {
+    height: 80vh;
+
+    img {
+        width: 300px;
+        opacity: 0;
+        aspect-ratio: 1/1;
+        animation: fadeIn ease .75s;
+        animation-delay: .33s;
+        animation-fill-mode: forwards;
+        border: 4px solid black;
+
+        @include dark {
+            border: 4px solid white;
+        }
+    }
+
+    h3 {
+        margin-top: 0;
+        font-size: 3rem;
+    }
+}
+
+.about-me-content {
+    width: 100%;
+    opacity: 0;
+    animation: moveUp ease-out .75s, fadeIn ease .75s;
+    animation-delay: .75s;
+    animation-fill-mode: forwards;
+
+    h3 {
+        flex-grow: 1;
+        text-align: end;
+        border-bottom: 4px solid black;
+
+        @include dark {
+            border-bottom: 4px solid white;
+        }
+    }
+}
+.about-me-content *:first-child,
+#experience .sub-content div *:first-child,
+#projects .blur *:first-child {
+    margin-top: 0;
+}
+.about-me-content *:last-child,
+#experience .sub-content div *:last-child,
+.blur > *:last-child {
+    margin-bottom: 0;
+}
+
+
+
+/* experience section */
+#experience {
+    opacity: 0;
+    &.show {
+        opacity: 1;
+    }
+    /* background: rgba(255, 0, 0, 0.5);
+    animation: moveUp ease .75s;
+    animation-fill-mode: forwards; */
+
+    h3 {
+        margin-bottom: 1.5rem;
+    }
+
+    h4 {
+        margin-top: 0;
+        border: 0;
+        padding: 0;
+    }
+
+    div.exp-details {
+        display: flex;
+        justify-content: space-between;
+        ion-icon {
+            margin-right: 1rem;
+        }
+        >span {
+            display: flex;
+        }
+    }
+
+    #skills {
+        margin-top: 2rem;
+        position: relative;
+
+        span {
+            display: none;
+        }
+
+        span.hover {
+            position: relative;
+            cursor: help;
+            padding: 0;
+            display: inline-flex;
+            margin: 0;
+            margin-right: .33rem;
+            opacity: 0;
+            animation: fadeIn ease-in-out .75s;
+            animation-fill-mode: forwards;
+            will-change: opacity;
+
+            &:hover span {
+                position: absolute;
+                top: 100%;
+                padding: .75rem .75rem;
+                display: block;
+                color: black;
+                background: white;
+                font-family: "Heading Pro"!important;
+                font-style: italic;
+                font-weight: bolder;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        img {
+            padding: .5rem;
+            width: 3rem;
+            height: 3rem;
+            @include light {
+                filter: invert(1);
+            }
+        }
+        
+    }
+
+    .sub-content {
+        margin-bottom: 3rem;
+        display: flex;
+
+        &:last-child {
+            margin: 0%;
+        }
+
+        h4 {
+            opacity: 1;
+        }
+
+        p {
+            margin-top: 3rem;
+        }
+
+        /*div:not(.line) {
+            padding-left: 3rem;
+        }
+
+        div > span {
+            display: block;
+            line-height: 1.75rem;
+        }*/
+    }
+
+    /*.line {
+        border-left: 4px solid black;
+        border-radius: 2px;
+        margin: 1.5rem 0;
+
+        @include dark {
+            border-left: 4px solid white;
+        }
+    }*/
+}
+
+// experience animations
+#experience.show h4:not(.sub-content h4),
+#experience.show #skills {
+    animation: fadeIn ease-in-out .75s;
+    animation-fill-mode: forwards;
+}
+
+
+
+#artworks {
+    
+    .flex {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        gap: 3rem;
+        /* background: rgba(0, 255, 0, 0.5); */
+    }
+    
+    img {
+        max-width: 40%;
+        max-height: 70vh;
+        aspect-ratio: 1/1;
+        width: auto;
+        height: auto;
+        box-shadow: initial;
+    }
+
+    .pad-content {
+        flex: 1;
+        
+        h3 {
+            margin-top: 1rem;
+        }
+    }
+}
+
+
+
+
+#projects {
+
+    .flex {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        > img {
+            height: 6rem;
+            width: auto;
+            vertical-align: middle;
+        }
+    }
+
+    p {
+        margin-top: 3rem;
+    }
+    
+
+    h3 {
+        margin: 0;
+        margin-bottom: 1.5rem;
+
+        span {
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+    } 
+
+    /* background: rgba(0, 0, 255, 0.5); */
+
+    .blur.blur-xs {
+
+        &:not(&:first-child) {
+            margin-top: 2rem;
+        }
+        
+        h3 {
+            a {
+                opacity: 0;
+                transition: .25s ease-in-out;
+            }
+            
+            ion-icon {
+                vertical-align: middle;
+                font-size: 75%;
+            }
+        }
+
+        .hovering {
+            display: block;
+            position: absolute;
+            width: 5rem;
+            height: auto;
+            top: 0;
+            right: 0;
+            transform: translate(-25%, 25%);
+            opacity: 0;
+            transition: opacity .75s ease-in-out 1s;
+            pointer-events: none;
+        }
+        
+        &:hover {
+            h3 {
+                a {
+                    opacity: 1;
+                    margin-left: -.25rem;
+                    color: inherit;
+
+                    &:hover {
+                        margin-left: 0;
+                        opacity: 0.75;
+                        background: transparent;
+                    }
+                }
+
+            }
+            .hovering {
+                opacity: 1;
+            }
+        }
+    }
+    .skills {
+        display: flex;
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+
+        .skill {
+            margin: 0;
+            padding: 0;
+            display: inline-flex;
+            @include dark {
+                filter: invert(1);
+            }
+
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+}
+
+
+
+#contactme {
+
+    .blur.blur-xs {
+        grid-area: blur;
+        *:first-child {
+            margin-top: 0;
+        }
+
+        &:not(&:first-child) {
+            margin-top: 2rem;
+        }
+        
+        ion-icon {
+            margin-left: .5rem;
+            vertical-align: middle;
+        }
+    }
+
+    .buttons {
+        gap: 2rem;
+    }
+}
+
+
+
+.about-me-content .title {
+    display: flex;
+    gap: 3rem;
+    flex-direction: row;
+}
+.about-me-content .description {
+    margin-top: 3rem;
+}
+.logo {
+    width: 3rem;
+}
+
+div.navigation-bar {
+    @include laptop {
+        width: calc(100% - 7rem);
+        margin-left: 0;
+    }
+}

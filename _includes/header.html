@@ -9,7 +9,17 @@
             </div>
         </div>
 
-        <nav>
+        <div class="d-none-big">
+            <input type="checkbox" name="navigation" id="navigation">
+            <label for="navigation">dropdown :)</label>
+            <nav class="popup-navigation">
+                <a href="#">yo 1</a>
+                <a href="#">yo 2</a>
+                <a href="#">yo 3</a>
+            </nav>
+        </div>
+
+        <nav class="d-none-small">
             {% assign isLatest = "" %}
             {% assign isCategories = "" %}
             {% assign isArchive = "" %}
